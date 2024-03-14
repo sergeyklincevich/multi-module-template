@@ -33,25 +33,6 @@ class ArticlesRepository @Inject constructor(
         return localData.combine(remoteData) { dbo, dto ->
             mergeStrategy.merge(dbo, dto)
         }
-
-//        return flow {
-//            delay(5000)
-//            emit(RequestResult.InProgress)
-//            delay(5000)
-//            val result = api.everything(query = "android")
-//            if (result.isSuccess) {
-//                result.getOrNull()?.articles?.let {
-//                    db.articleDao.insertAll(it.map { it.toArticleDBO() })
-//                    emit(RequestResult.Success(it.map { it.toArticle() }))
-//                }
-//            } else {
-//                result.exceptionOrNull()?.message?.let {
-//                    Log.e("TAG", it)
-//                    emit(RequestResult.Error(it))
-//                } ?: emit(RequestResult.Error(null))
-//
-//            }
-//        }
     }
 
     private fun getLocalArticles(): Flow<RequestResult<List<Article>>> {
