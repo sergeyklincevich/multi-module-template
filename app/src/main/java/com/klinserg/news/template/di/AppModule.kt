@@ -1,4 +1,4 @@
-package com.klinserg.news.template
+package com.klinserg.news.template.di
 
 import android.content.Context
 import com.klinserg.news.api.NewsApi
@@ -8,6 +8,7 @@ import com.klinserg.news.core.AppDispatcher
 import com.klinserg.news.core.Logger
 import com.klinserg.news.db.NewsDatabase
 import com.klinserg.news.db.getDatabase
+import com.klinserg.news.template.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
