@@ -8,7 +8,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.klinserg.news.template.utils.NewsNavigationType
 import com.klinserg.news.ui.navigation.BottomNav
-import com.klinserg.news.ui.navigation.DrawerNav
+import com.klinserg.news.ui.navigation.drawernav.DrawerNav
 import com.klinserg.news.ui.navigation.RailNav
 import com.klinserg.news.ui.navigation.model.NavigationPanel
 

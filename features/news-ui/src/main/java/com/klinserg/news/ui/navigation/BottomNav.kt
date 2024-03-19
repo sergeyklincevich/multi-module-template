@@ -1,13 +1,12 @@
 package com.klinserg.news.ui.navigation
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -58,7 +57,6 @@ fun BottomNav(
     ) {
         MainNavHost(navController = navController, innerPadding = it)
     }
-
 }
 
 @Composable
@@ -102,7 +100,6 @@ fun BottomNavItem(
 
     Box(
         modifier = Modifier
-            .height(42.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(background)
             .clickable(onClick = {
@@ -112,22 +109,17 @@ fun BottomNavItem(
                 }
             })
     ) {
-        Row(
+        Column(
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
+            horizontalAlignment = Alignment.CenterHorizontally,
+//            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Icon(
                 painter = painterResource(id = if (selected) screen.iconSelected else screen.icon),
                 contentDescription = screen.name,
                 tint = contentColor
             )
-            AnimatedVisibility(visible = selected) {
-                Text(
-                    text = screen.name,
-                    color = contentColor
-                )
-            }
+            Text(text = screen.name, color = contentColor)
         }
     }
 }

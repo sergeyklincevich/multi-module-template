@@ -23,7 +23,7 @@ import com.klinserg.news.data.models.Article
 import com.klinserg.news.ui.viewmodels.NewsViewModel
 
 @Composable
-fun HomeScreen(
+fun NewsScreen(
     modifier: Modifier = Modifier,
     viewModel: NewsViewModel = hiltViewModel(),
     navigateToDetail: (Long) -> Unit,

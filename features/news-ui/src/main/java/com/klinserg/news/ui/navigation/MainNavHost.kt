@@ -8,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.klinserg.news.ui.FavoriteScreen
-import com.klinserg.news.ui.HomeScreen
+import com.klinserg.news.ui.NewsScreen
 import com.klinserg.news.ui.ProfileScreen
 import com.klinserg.news.ui.navigation.model.NavigationPanel
 
@@ -23,7 +23,7 @@ fun MainNavHost(
         modifier = Modifier.padding(innerPadding)
     ) {
         composable(NavigationPanel.News.route) {
-            HomeScreen(
+            NewsScreen(
                 navigateToDetail = { productId ->
 //                    navController.navigate(GeneralScreen.DetailProduct.createRoute(productId))
                 },
