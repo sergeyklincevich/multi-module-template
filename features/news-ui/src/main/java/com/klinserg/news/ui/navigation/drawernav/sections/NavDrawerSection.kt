@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -41,9 +42,9 @@ fun NavDrawerSection(
             Spacer(modifier = modifier.height(16.dp))
             NavDrawerHeader(modifier = modifier)
             Spacer(modifier = modifier.height(16.dp))
-            Divider(
+            HorizontalDivider(
                 thickness = 1.dp,
-                color = Color.White.copy(alpha = 0.5f),
+                color = Color.White.copy(alpha = 0.5f)
             )
             Spacer(modifier = modifier.height(16.dp))
             NavDrawerMenu(

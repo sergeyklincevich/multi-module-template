@@ -1,24 +1,26 @@
 package com.klinserg.news.ui.navigation.model
 
+import com.klinserg.news.ui.R
+
 sealed class NavigationPanel {
     data object News : NavigationItem(
         route = "route_news",
         name = "News",
-        icon = androidx.core.R.drawable.ic_call_answer,
-        iconSelected = androidx.core.R.drawable.ic_call_decline
+        icon = R.drawable.home,
+        iconSelected = R.drawable.home,
     )
 
     data object Favorite : NavigationItem(
         route = "route_favorite",
         name = "Favorite",
-        icon = androidx.core.R.drawable.ic_call_answer,
-        iconSelected = androidx.core.R.drawable.ic_call_decline
+        icon = R.drawable.favorite,
+        iconSelected = R.drawable.favorite,
     )
 
     data object Profile : NavigationItem(
         route = "route_profile",
         name = "Profile",
-        icon = androidx.core.R.drawable.ic_call_answer,
-        iconSelected = androidx.core.R.drawable.ic_call_decline
+        icon = R.drawable.user,
+        iconSelected = R.drawable.user,
     )
 }

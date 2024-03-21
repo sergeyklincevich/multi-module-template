@@ -4,9 +4,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.klinserg.news.ui.FavoriteScreen
 import com.klinserg.news.ui.NewsScreen
 import com.klinserg.news.ui.ProfileScreen
@@ -42,18 +45,18 @@ fun MainNavHost(
         composable(NavigationPanel.Profile.route) {
             ProfileScreen()
         }
-//        composable(
-//            route = GeneralScreen.DetailProduct.route,
-//            arguments = listOf(navArgument("productId") { type = NavType.IntType }),
-//        ) {
-//            val id = it.arguments?.getInt("productId") ?: -1
-//            DetailScreen(
-//                productId = id,
-//                navigateBack = {
-//                    navController.navigateUp()
-//                },
-//            )
-//        }
+        composable(
+            route = GeneralScreen.DetailProduct.route,
+            arguments = listOf(navArgument("productId") { type = NavType.IntType }),
+        ) {
+            val id = it.arguments?.getInt("productId") ?: -1
+            DetailScreen(
+                productId = id,
+                navigateBack = {
+                    navController.navigateUp()
+                },
+            )
+        }
 //        composable(
 //            route = GeneralScreen.SearchProduct.route,
 //        ) {
