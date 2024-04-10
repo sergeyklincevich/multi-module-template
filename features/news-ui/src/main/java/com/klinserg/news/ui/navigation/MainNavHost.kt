@@ -45,18 +45,18 @@ fun MainNavHost(
         composable(NavigationPanel.Profile.route) {
             ProfileScreen()
         }
-        composable(
-            route = GeneralScreen.DetailProduct.route,
-            arguments = listOf(navArgument("productId") { type = NavType.IntType }),
-        ) {
-            val id = it.arguments?.getInt("productId") ?: -1
-            DetailScreen(
-                productId = id,
-                navigateBack = {
-                    navController.navigateUp()
-                },
-            )
-        }
+//        composable(
+//            route = GeneralScreen.DetailProduct.route,
+//            arguments = listOf(navArgument("productId") { type = NavType.IntType }),
+//        ) {
+//            val id = it.arguments?.getInt("productId") ?: -1
+//            DetailScreen(
+//                productId = id,
+//                navigateBack = {
+//                    navController.navigateUp()
+//                },
+//            )
+//        }
 //        composable(
 //            route = GeneralScreen.SearchProduct.route,
 //        ) {

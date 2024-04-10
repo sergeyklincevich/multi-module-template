@@ -56,7 +56,7 @@ class ArticlesRepository @Inject constructor(
         val apiData = flow { emit(api.everything(query)) }
             .onEach { result ->
                 when {
-                    result.isSuccess -> saveArticlesToDatabase(result.getOrThrow().articles)
+                    result.isSuccess -> saveArticlesToDatabase(result.getOrThrow().articles.filter { !it.author.isNullOrEmpty() })
                     result.isFailure ->
                         logger.e(
                             TAG,
@@ -65,11 +65,14 @@ class ArticlesRepository @Inject constructor(
                 }
             }
             .map { it.toRequestResult() }
+
         val start =
             flow<RequestResult<ResponseDTO<ArticleDTO>>> { emit(RequestResult.InProgress) }
 
         return merge(start, apiData).map { result ->
-            result.map { response -> response.articles.map { it.toArticle() } }
+            result.map { response ->
+                response.articles.map { it.toArticle() }.filter { !it.author.isNullOrEmpty() }
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ internal fun ArticleDTO.toArticle(): Article {
     return Article(
         id = 0,
         source = this.source.toSource(),
-        author = this.author,
+        author = this.author ?: "",
         title = this.title,
         description = this.description,
         url = this.url,
@@ -31,7 +31,7 @@ internal fun SourceDTO.toSource(): Source {
 internal fun ArticleDTO.toArticleDBO(): ArticleDBO {
     return ArticleDBO(
         source = this.source.toSourceDBO(),
-        author = this.author,
+        author = this.author ?: "",
         title = this.title,
         description = this.description,
         url = this.url,
