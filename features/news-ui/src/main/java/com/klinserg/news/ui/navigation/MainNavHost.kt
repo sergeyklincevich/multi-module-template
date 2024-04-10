@@ -13,6 +13,7 @@ import com.klinserg.news.ui.DetailScreen
 import com.klinserg.news.ui.FavoriteScreen
 import com.klinserg.news.ui.NewsScreen
 import com.klinserg.news.ui.ProfileScreen
+import com.klinserg.news.ui.SearchScreen
 import com.klinserg.news.ui.navigation.model.GeneralScreen
 import com.klinserg.news.ui.navigation.model.NavigationPanel
 
@@ -32,15 +33,15 @@ fun MainNavHost(
                     navController.navigate(GeneralScreen.DetailArticle.createRoute(articleId))
                 },
                 navigateToSearch = {
-//                    navController.navigate(GeneralScreen.SearchProduct.route)
+                    navController.navigate(GeneralScreen.SearchProduct.route)
                 }
             )
         }
         composable(NavigationPanel.Favorite.route) {
             FavoriteScreen(
-//                navigateToDetail = { productId ->
-//                    navController.navigate(GeneralScreen.DetailProduct.createRoute(productId))
-//                }
+                navigateToDetail = { articleId ->
+                    navController.navigate(GeneralScreen.DetailArticle.createRoute(articleId))
+                }
             )
         }
         composable(NavigationPanel.Profile.route) {
@@ -58,17 +59,17 @@ fun MainNavHost(
                 },
             )
         }
-//        composable(
-//            route = GeneralScreen.SearchProduct.route,
-//        ) {
-//            SearchScreen(
-//                navigateToDetail = { productId ->
-//                    navController.navigate(GeneralScreen.DetailProduct.createRoute(productId))
-//                },
-//                navigateBack = {
-//                    navController.navigateUp()
-//                }
-//            )
-//        }
+        composable(
+            route = GeneralScreen.SearchProduct.route,
+        ) {
+            SearchScreen(
+                navigateToDetail = { articleId ->
+                    navController.navigate(GeneralScreen.DetailArticle.createRoute(articleId))
+                },
+                navigateBack = {
+                    navController.navigateUp()
+                }
+            )
+        }
     }
 }

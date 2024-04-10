@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 fun FavoriteScreen(
     modifier: Modifier = Modifier,
     navHostController: NavHostController = rememberNavController(),
+    navigateToDetail: (Long) -> Unit,
 ) {
     Box(
         contentAlignment = Alignment.Center,

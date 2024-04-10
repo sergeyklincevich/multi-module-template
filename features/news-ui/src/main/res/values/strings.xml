@@ -2,5 +2,6 @@
 <resources>
     <string name="user_name">Sergey Klincevich</string>
     <string name="contact_user">https://github.com/sergeyklincevich</string>
-    <string name="detail_article">Detail News</string>
+    <string name="detail_article">Detail Article</string>
+    <string name="search_article">Search Article</string>
 </resources>
