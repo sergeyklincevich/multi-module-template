@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.0"
 annotation = "1.7.1"
+coil = "2.6.0"
 hilt-android = "2.48"
 hilt-navigation-compose = "1.2.0"
 javax-inject = "1"
@@ -58,6 +59,8 @@ ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

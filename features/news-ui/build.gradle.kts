@@ -53,6 +53,9 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
 
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+
     implementation(libs.javax.inject)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
