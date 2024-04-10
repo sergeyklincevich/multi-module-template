@@ -2,7 +2,7 @@ package com.klinserg.news.ui.navigation.model
 
 import com.klinserg.news.ui.R
 
-sealed class NavigationPanel {
+sealed class NavigationPanel(val route: String) {
     data object News : NavigationItem(
         route = "route_news",
         name = "News",
