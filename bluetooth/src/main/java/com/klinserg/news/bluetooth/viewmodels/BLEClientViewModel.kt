@@ -13,6 +13,7 @@ import com.klinserg.news.bluetooth.BLEDeviceConnection
 import com.klinserg.news.bluetooth.BLEScanner
 import com.klinserg.news.bluetooth.PERMISSION_BLUETOOTH_CONNECT
 import com.klinserg.news.bluetooth.PERMISSION_BLUETOOTH_SCAN
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -21,9 +22,12 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@HiltViewModel
+class BLEClientViewModel @Inject constructor(private val application: Application) :
+    AndroidViewModel(application) {
 
-class BLEClientViewModel(private val application: Application) : AndroidViewModel(application) {
     private val bleScanner = BLEScanner(application)
     private var activeConnection = MutableStateFlow<BLEDeviceConnection?>(null)
 

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -23,12 +24,18 @@ android {
             )
         }
     }
+    buildFeatures {
+        compose = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 }
 
@@ -44,4 +51,10 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+
+    implementation(libs.javax.inject)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    kapt(libs.hilt.android.compiler)
+
 }
