@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.daggerHilt)
-    alias(libs.plugins.kapt)
 }
 
 android {
-    namespace = "com.klinserg.news.ui"
+    namespace = "com.klinserg.news.bluetooth"
     compileSdk = 34
 
     defaultConfig {
@@ -32,13 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-
 }
 
 dependencies {
@@ -46,27 +37,11 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
-
-    implementation(libs.coil)
-    implementation(libs.coil.compose)
-
-    implementation(libs.javax.inject)
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    kapt(libs.hilt.android.compiler)
-    implementation(libs.hilt.navigation.compose)
-
-    implementation(project(":news-data"))
-    implementation(project(":bluetooth"))
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }
