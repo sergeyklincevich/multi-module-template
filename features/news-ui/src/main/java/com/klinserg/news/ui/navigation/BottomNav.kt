@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -27,6 +28,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.klinserg.news.ui.navigation.model.NavigationItem
 import com.klinserg.news.ui.navigation.model.NavigationPanel
+import com.klinserg.news.uikit.theme.DividerApp
 
 @Composable
 fun BottomNav(
@@ -37,7 +39,7 @@ fun BottomNav(
 ) {
     Scaffold(
         modifier = modifier,
-        containerColor = MaterialTheme.colorScheme.primary,
+        containerColor = MaterialTheme.colorScheme.surface,
         bottomBar = {
             // show and hide bottom navigation
             currentDestination?.let {
@@ -66,20 +68,23 @@ fun BottomBar(
     navigationItemList: List<NavigationItem>,
     currentDestination: NavDestination,
 ) {
-    Row(
-        modifier = modifier
-            .padding(start = 0.dp, end = 0.dp, top = 10.dp, bottom = 10.dp)
-            .background(Color.Transparent)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        navigationItemList.forEach { screen ->
-            BottomNavItem(
-                screen = screen,
-                currentDestination = currentDestination,
-                navController = navController
-            )
+    Column {
+        HorizontalDivider(color = DividerApp)
+        Row(
+            modifier = modifier
+                .padding(start = 0.dp, end = 0.dp, top = 10.dp, bottom = 20.dp)
+                .background(Color.Transparent)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            navigationItemList.forEach { screen ->
+                BottomNavItem(
+                    screen = screen,
+                    currentDestination = currentDestination,
+                    navController = navController
+                )
+            }
         }
     }
 }
@@ -91,17 +96,17 @@ fun BottomNavItem(
     navController: NavHostController,
 ) {
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
-    val background =
-        if (selected) MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.1f)
-        else Color.Transparent
+//    val background =
+//        if (selected) MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.1f)
+//        else Color.Transparent
     val contentColor =
-        if (selected) MaterialTheme.colorScheme.background
-        else MaterialTheme.colorScheme.background.copy(alpha = 0.4f)
+        if (selected) MaterialTheme.colorScheme.primary
+        else MaterialTheme.colorScheme.secondary
 
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
-            .background(background)
+//            .background(background)
             .clickable(onClick = {
                 navController.navigate(screen.route) {
                     popUpTo(navController.graph.findStartDestination().id)

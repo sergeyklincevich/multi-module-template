@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.androidx.material3.window.size)
 
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.core.splashscreen)
 
     implementation(libs.retrofit)
     debugImplementation(libs.logging.interceptor)

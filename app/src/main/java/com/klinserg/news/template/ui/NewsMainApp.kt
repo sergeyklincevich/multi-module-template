@@ -10,7 +10,6 @@ fun NewsMainApp(
     windowSize: WindowWidthSizeClass,
     modifier: Modifier = Modifier,
 ) {
-
     val navigationType = when (windowSize) {
         WindowWidthSizeClass.Compact -> NewsNavigationType.BOTTOM_NAVIGATION
         WindowWidthSizeClass.Medium -> NewsNavigationType.NAVIGATION_RAIL

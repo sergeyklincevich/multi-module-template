@@ -2,6 +2,7 @@
 agp = "8.3.0"
 annotation = "1.7.1"
 coil = "2.6.0"
+core-splashscreen = "1.0.1"
 hilt-android = "2.48"
 hilt-navigation-compose = "1.2.0"
 javax-inject = "1"
@@ -26,6 +27,7 @@ lifecycle-runtime-compose = "2.7.0"
 
 [libraries]
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "core-splashscreen" }
 androidx-material3-window-size = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3-window-size" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }

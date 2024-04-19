@@ -64,6 +64,7 @@ dependencies {
 
     implementation(project(":news-data"))
     implementation(project(":bluetooth"))
+    implementation(project(":news-uikit"))
 }
 
 // Allow references to generated code
