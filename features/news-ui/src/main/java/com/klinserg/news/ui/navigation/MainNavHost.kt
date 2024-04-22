@@ -1,9 +1,13 @@
 package com.klinserg.news.ui.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -72,4 +76,20 @@ fun MainNavHost(
             )
         }
     }
+}
+
+@Composable
+fun PaddingValues.copy(
+    start: Dp? = null,
+    top: Dp? = null,
+    end: Dp? = null,
+    bottom: Dp? = null,
+): PaddingValues {
+    val layoutDirection = LocalLayoutDirection.current
+    return PaddingValues(
+        start = start ?: this.calculateStartPadding(layoutDirection),
+        top = top ?: this.calculateTopPadding(),
+        end = end ?: this.calculateEndPadding(layoutDirection),
+        bottom = bottom ?: this.calculateBottomPadding(),
+    )
 }
