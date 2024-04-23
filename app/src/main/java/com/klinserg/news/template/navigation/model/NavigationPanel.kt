@@ -1,4 +1,4 @@
-package com.klinserg.news.ui.navigation.model
+package com.klinserg.news.template.navigation.model
 
 import com.klinserg.news.ui.R
 

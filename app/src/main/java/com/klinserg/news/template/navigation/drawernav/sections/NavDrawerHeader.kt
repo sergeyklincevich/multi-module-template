@@ -1,4 +1,4 @@
-package com.klinserg.news.ui.navigation.drawernav.sections
+package com.klinserg.news.template.navigation.drawernav.sections
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

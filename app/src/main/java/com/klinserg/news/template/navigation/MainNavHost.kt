@@ -1,4 +1,4 @@
-package com.klinserg.news.ui.navigation
+package com.klinserg.news.template.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
@@ -13,13 +13,13 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.klinserg.news.bluetooth.BluetoothScreen
+import com.klinserg.news.template.navigation.model.GeneralScreen
+import com.klinserg.news.template.navigation.model.NavigationPanel
 import com.klinserg.news.ui.DetailScreen
 import com.klinserg.news.ui.FavoriteScreen
 import com.klinserg.news.ui.NewsScreen
-import com.klinserg.news.ui.ProfileScreen
 import com.klinserg.news.ui.SearchScreen
-import com.klinserg.news.ui.navigation.model.GeneralScreen
-import com.klinserg.news.ui.navigation.model.NavigationPanel
 
 @Composable
 fun MainNavHost(
@@ -49,7 +49,7 @@ fun MainNavHost(
             )
         }
         composable(NavigationPanel.Profile.route) {
-            ProfileScreen()
+            BluetoothScreen()
         }
         composable(
             route = GeneralScreen.DetailArticle.route,

@@ -1,4 +1,4 @@
-package com.klinserg.news.ui.navigation.drawernav.sections
+package com.klinserg.news.template.navigation.drawernav.sections
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
-import com.klinserg.news.ui.navigation.model.NavigationItem
+import com.klinserg.news.template.navigation.model.NavigationItem
 
 @Composable
 fun NavDrawerSection(

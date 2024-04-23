@@ -7,10 +7,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.klinserg.news.template.utils.NewsNavigationType
-import com.klinserg.news.ui.navigation.BottomNav
-import com.klinserg.news.ui.navigation.drawernav.DrawerNav
-import com.klinserg.news.ui.navigation.RailNav
-import com.klinserg.news.ui.navigation.model.NavigationPanel
+import com.klinserg.news.template.navigation.BottomNav
+import com.klinserg.news.template.navigation.drawernav.DrawerNav
+import com.klinserg.news.template.navigation.RailNav
+import com.klinserg.news.template.navigation.model.NavigationPanel
 
 @Composable
 fun NewMainScreen(

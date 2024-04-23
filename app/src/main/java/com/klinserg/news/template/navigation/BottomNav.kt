@@ -1,4 +1,4 @@
-package com.klinserg.news.ui.navigation
+package com.klinserg.news.template.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,8 +27,8 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.klinserg.news.ui.navigation.model.NavigationItem
-import com.klinserg.news.ui.navigation.model.NavigationPanel
+import com.klinserg.news.template.navigation.model.NavigationItem
+import com.klinserg.news.template.navigation.model.NavigationPanel
 import com.klinserg.news.uikit.theme.DividerApp
 
 @Composable
