@@ -1,4 +1,4 @@
-package com.klinserg.news.ui
+package com.klinserg.news.news_favorite
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -133,14 +133,6 @@ fun FavoriteScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun modalBottomSheet() {
-    //    Box(
-//        contentAlignment = Alignment.Center,
-//        modifier = Modifier
-//            .background(color = MaterialTheme.colorScheme.background)
-//            .fillMaxSize()
-//    ) {
-//        Text(text = "Favorite screen", color = MaterialTheme.colorScheme.primary)
-//    }
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
     var showBottomSheet by remember { mutableStateOf(false) }
