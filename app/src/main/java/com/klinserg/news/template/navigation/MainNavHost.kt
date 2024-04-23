@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.klinserg.news.bluetooth.BluetoothScreen
+import com.klinserg.news.news_details.DetailScreen
 import com.klinserg.news.template.navigation.model.GeneralScreen
 import com.klinserg.news.template.navigation.model.NavigationPanel
 import com.klinserg.news.ui.FavoriteScreen
