@@ -9,10 +9,10 @@ import androidx.annotation.RequiresPermission
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.klinserg.news.bluetooth.BLEDeviceConnection
-import com.klinserg.news.bluetooth.BLEScanner
-import com.klinserg.news.bluetooth.PERMISSION_BLUETOOTH_CONNECT
-import com.klinserg.news.bluetooth.PERMISSION_BLUETOOTH_SCAN
+import com.klinserg.news.bluetooth.service.BLEDeviceConnection
+import com.klinserg.news.bluetooth.service.BLEScanner
+import com.klinserg.news.bluetooth.service.PERMISSION_BLUETOOTH_CONNECT
+import com.klinserg.news.bluetooth.service.PERMISSION_BLUETOOTH_SCAN
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

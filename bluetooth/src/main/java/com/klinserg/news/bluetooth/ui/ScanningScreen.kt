@@ -18,8 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.klinserg.news.bluetooth.PERMISSION_BLUETOOTH_CONNECT
-import com.klinserg.news.bluetooth.PERMISSION_BLUETOOTH_SCAN
+import com.klinserg.news.bluetooth.service.PERMISSION_BLUETOOTH_CONNECT
+import com.klinserg.news.bluetooth.service.PERMISSION_BLUETOOTH_SCAN
 
 @Composable
 @RequiresPermission(allOf = [PERMISSION_BLUETOOTH_SCAN, PERMISSION_BLUETOOTH_CONNECT])

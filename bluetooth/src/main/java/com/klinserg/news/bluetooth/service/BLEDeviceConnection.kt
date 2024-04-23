@@ -1,4 +1,4 @@
-package com.klinserg.news.bluetooth
+package com.klinserg.news.bluetooth.service
 
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt

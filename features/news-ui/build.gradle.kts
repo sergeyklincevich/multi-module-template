@@ -63,7 +63,6 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
 
     implementation(project(":news-data"))
-    implementation(project(":bluetooth"))
     implementation(project(":news-uikit"))
 }
 

@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.klinserg.news.bluetooth.CTF_SERVICE_UUID
+import com.klinserg.news.bluetooth.service.CTF_SERVICE_UUID
 
 @Composable
 fun DeviceScreen(
