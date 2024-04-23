@@ -15,11 +15,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.klinserg.news.bluetooth.BluetoothScreen
 import com.klinserg.news.news_details.DetailScreen
+import com.klinserg.news.news_search.SearchScreen
 import com.klinserg.news.template.navigation.model.GeneralScreen
 import com.klinserg.news.template.navigation.model.NavigationPanel
 import com.klinserg.news.ui.FavoriteScreen
 import com.klinserg.news.ui.NewsScreen
-import com.klinserg.news.ui.SearchScreen
 
 @Composable
 fun MainNavHost(

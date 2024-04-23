@@ -1,4 +1,4 @@
-package com.klinserg.news.ui
+package com.klinserg.news.news_search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
