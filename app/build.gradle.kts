@@ -85,6 +85,7 @@ dependencies {
 
     implementation(project(":news-uikit"))
     implementation(project(":features:news-ui"))
+    implementation(project(":features:news-details"))
     implementation(project(":bluetooth"))
     implementation(project(":news-api"))
     implementation(project(":news-db"))

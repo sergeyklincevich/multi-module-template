@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -37,7 +39,22 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
+
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+
+    implementation(libs.javax.inject)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.navigation.compose)
+
+    implementation(project(":news-data"))
+    implementation(project(":news-uikit"))
 }
