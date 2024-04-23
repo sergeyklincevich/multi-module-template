@@ -42,7 +42,7 @@ fun MainNavHost(
             )
         }
         composable(NavigationPanel.Favorite.route) {
-            com.klinserg.news.news_favorite.FavoriteScreen(
+            FavoriteScreen(
                 navigateToDetail = { articleId ->
                     navController.navigate(GeneralScreen.DetailArticle.createRoute(articleId))
                 }
