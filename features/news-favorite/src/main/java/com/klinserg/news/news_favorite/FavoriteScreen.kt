@@ -26,6 +26,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,18 +42,20 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.klinserg.news.news_favorite.viewmodels.FavoriteViewModel
 import com.klinserg.news.uikit.theme.GrayApp
-import com.klinserg.news.uikit.theme.PrimaryApp
 
 @Composable
 fun FavoriteScreen(
     modifier: Modifier = Modifier,
+    viewModel: FavoriteViewModel = hiltViewModel(),
     navHostController: NavHostController = rememberNavController(),
     navigateToDetail: (Long) -> Unit,
 ) {
-    var enabled by remember { mutableStateOf(false) }
+    val enabled by viewModel.state.collectAsState()
 
     Column(
         modifier = Modifier
@@ -112,7 +115,7 @@ fun FavoriteScreen(
                         shape = CircleShape
                     )
                     .clip(CircleShape)
-                    .clickable { enabled = !enabled }
+                    .clickable { viewModel.changeState() }
 
             )
             {
@@ -123,7 +126,7 @@ fun FavoriteScreen(
                     painter = painterResource(id = R.drawable.ic_on_off),
                     contentScale = ContentScale.Inside,
                     contentDescription = "play button",
-                    colorFilter = ColorFilter.tint(if (enabled) PrimaryApp else MaterialTheme.colorScheme.onPrimary),
+                    colorFilter = ColorFilter.tint(if (enabled) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary),
                 )
             }
         }

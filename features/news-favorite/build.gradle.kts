@@ -62,5 +62,6 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
 
     implementation(project(":news-data"))
+    implementation(project(":datastore"))
     implementation(project(":news-uikit"))
 }
