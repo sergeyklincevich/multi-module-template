@@ -42,5 +42,5 @@ dependencies {
 
     implementation(projects.core.newsApi)
     implementation(projects.core.newsDb)
-    implementation(projects.core.newsCore)
+    implementation(projects.core.common)
 }
