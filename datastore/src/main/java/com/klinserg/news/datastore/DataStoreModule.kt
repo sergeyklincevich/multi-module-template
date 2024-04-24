@@ -11,27 +11,30 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class DataStoreModule {
 
-//    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     private val Context.dataStoreProto: DataStore<UserPreferences> by dataStore(
         fileName = "user_preferences.pb",
         serializer = UserPreferencesSerializer()
     )
 
-//    @Provides
-//    @Singleton
-//    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
-//        return context.dataStore
-//    }
+    @Provides
+    @Singleton
+    @Named("PrefDataStore")
+    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
+        return context.dataStore
+    }
 
     @Provides
     @Singleton
+    @Named("ProtoDataStore")
     fun provideDataStore(@ApplicationContext context: Context): DataStore<UserPreferences> {
         return context.dataStoreProto
     }

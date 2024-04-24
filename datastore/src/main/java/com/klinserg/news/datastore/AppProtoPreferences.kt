@@ -5,8 +5,10 @@ import com.klinserg.news.datastore_proto.UserPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import javax.inject.Named
 
 class AppProtoPreferences @Inject constructor(
+    @Named("ProtoDataStore")
     private val dataStore: DataStore<UserPreferences>,
 ) {
 

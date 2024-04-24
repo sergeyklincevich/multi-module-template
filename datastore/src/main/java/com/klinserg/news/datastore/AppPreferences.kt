@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import javax.inject.Named
 
 enum class SortOrder {
     NONE,
@@ -21,7 +22,8 @@ data class CommonPreferences(
 )
 
 class AppPreferences @Inject constructor(
-    private val dataStore: DataStore<Preferences>
+    @Named("PrefDataStore")
+    private val dataStore: DataStore<Preferences>,
 ) {
 
     private object PreferencesKeys {

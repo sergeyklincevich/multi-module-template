@@ -14,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val preferences: AppProtoPreferences,
+//    private val preferences: AppPreferences,
 ) : ViewModel() {
 
     val state: StateFlow<Boolean> = preferences.isEnabledFlow
