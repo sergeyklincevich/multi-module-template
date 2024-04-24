@@ -83,16 +83,16 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-    implementation(project(":news-uikit"))
-    implementation(project(":features:news-ui"))
-    implementation(project(":features:news-favorite"))
-    implementation(project(":features:news-details"))
-    implementation(project(":features:news-search"))
-    implementation(project(":bluetooth"))
-    implementation(project(":news-api"))
-    implementation(project(":news-db"))
-    implementation(project(":news-data"))
-    implementation(project(":news-core"))
+    implementation(projects.features.newsUi)
+    implementation(projects.features.newsDetails)
+    implementation(projects.features.newsFavorite)
+    implementation(projects.features.newsSearch)
+    implementation(projects.core.newsUikit)
+    implementation(projects.core.newsData)
+    implementation(projects.core.newsCore)
+    implementation(projects.core.newsDb)
+    implementation(projects.core.newsApi)
+    implementation(projects.core.bluetooth)
 }
 
 // Allow references to generated code

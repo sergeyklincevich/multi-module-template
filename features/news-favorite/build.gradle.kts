@@ -61,7 +61,7 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
 
-    implementation(project(":news-data"))
-    implementation(project(":news-uikit"))
-    implementation(project(":datastore"))
+    implementation(projects.core.newsData)
+    implementation(projects.core.newsUikit)
+    implementation(projects.core.datastore)
 }

@@ -62,8 +62,8 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
 
-    implementation(project(":news-data"))
-    implementation(project(":news-uikit"))
+    implementation(projects.core.newsData)
+    implementation(projects.core.newsUikit)
 }
 
 // Allow references to generated code

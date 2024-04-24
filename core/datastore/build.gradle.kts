@@ -48,5 +48,5 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
 
-    implementation(project(":datastore-proto"))
+    implementation(projects.core.datastoreProto)
 }
