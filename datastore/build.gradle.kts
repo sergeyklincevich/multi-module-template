@@ -43,10 +43,13 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
 //    implementation(libs.androidx.datastore)
 //    implementation(libs.androidx.datastore.core)
-
+    implementation(libs.protobuf.javalite)
+    
     implementation(libs.javax.inject)
     implementation(libs.hilt.android)
     implementation(libs.androidx.lifecycle.runtime.compose)
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
+
+    implementation(project(":datastore-proto"))
 }

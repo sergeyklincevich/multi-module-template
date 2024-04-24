@@ -3,6 +3,7 @@ package com.klinserg.news.news_favorite.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.klinserg.news.datastore.AppPreferences
+import com.klinserg.news.datastore.AppProtoPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
-    private val preferences: AppPreferences,
+    private val preferences: AppProtoPreferences,
 ) : ViewModel() {
 
     val state: StateFlow<Boolean> = preferences.isEnabledFlow

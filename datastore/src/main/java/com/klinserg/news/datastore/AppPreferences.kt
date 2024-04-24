@@ -15,12 +15,14 @@ enum class SortOrder {
     BY_DATE,
 }
 
-data class UserPreferences(
+data class CommonPreferences(
     val isEnabled: Boolean,
     val sortOrder: SortOrder,
 )
 
-class AppPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
+class AppPreferences @Inject constructor(
+    private val dataStore: DataStore<Preferences>
+) {
 
     private object PreferencesKeys {
         val SORT_ORDER = stringPreferencesKey("sort_order")
@@ -38,13 +40,13 @@ class AppPreferences @Inject constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    val userPreferencesFlow: Flow<UserPreferences> = dataStore.data.map(::mapUserPreferences)
+    val userPreferencesFlow: Flow<CommonPreferences> = dataStore.data.map(::mapUserPreferences)
 
-    private fun mapUserPreferences(preferences: Preferences): UserPreferences {
+    private fun mapUserPreferences(preferences: Preferences): CommonPreferences {
         val sortOrder =
             SortOrder.valueOf(preferences[PreferencesKeys.SORT_ORDER] ?: SortOrder.NONE.name)
 
         val isEnabled = preferences[PreferencesKeys.IS_ENABLED] ?: false
-        return UserPreferences(isEnabled, sortOrder)
+        return CommonPreferences(isEnabled, sortOrder)
     }
 }
