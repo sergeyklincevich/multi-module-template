@@ -14,6 +14,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "NewsTemplateApp"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":features:news-ui")
 include(":news-api")
