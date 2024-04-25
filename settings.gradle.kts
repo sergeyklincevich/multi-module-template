@@ -27,7 +27,7 @@ include(":core:datastore-proto")
 include(":core:designsystem")
 include(":core:network")
 
-include(":features:news-ui")
+include(":features:news-list")
 include(":features:news-details")
 include(":features:news-search")
 include(":features:news-favorite")

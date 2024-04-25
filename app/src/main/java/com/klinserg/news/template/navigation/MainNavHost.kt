@@ -16,10 +16,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.klinserg.news.bluetooth.BluetoothScreen
 import com.klinserg.news.news_details.DetailScreen
+import com.klinserg.news.news_favorite.FavoriteScreen
 import com.klinserg.news.news_search.SearchScreen
 import com.klinserg.news.template.navigation.model.GeneralScreen
 import com.klinserg.news.template.navigation.model.NavigationPanel
-import com.klinserg.news.news_favorite.FavoriteScreen
 import com.klinserg.news.ui.NewsScreen
 
 @Composable
@@ -43,11 +43,7 @@ fun MainNavHost(
             )
         }
         composable(NavigationPanel.Favorite.route) {
-            FavoriteScreen(
-                navigateToDetail = { articleId ->
-                    navController.navigate(GeneralScreen.DetailArticle.createRoute(articleId))
-                }
-            )
+            FavoriteScreen()
         }
         composable(NavigationPanel.Profile.route) {
             BluetoothScreen()

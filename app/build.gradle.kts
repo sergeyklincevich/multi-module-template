@@ -83,7 +83,7 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-    implementation(projects.features.newsUi)
+    implementation(projects.features.newsList)
     implementation(projects.features.newsDetails)
     implementation(projects.features.newsFavorite)
     implementation(projects.features.newsSearch)
