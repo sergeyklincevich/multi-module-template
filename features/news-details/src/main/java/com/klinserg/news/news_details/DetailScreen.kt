@@ -24,7 +24,6 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun DetailScreen(
     articleId: Int,
-//    viewModel: DetailViewModel = hiltViewModel(),
     navigateBack: () -> Unit,
 ) {
     Scaffold(
@@ -56,22 +55,6 @@ fun DetailScreen(
                     .padding(it)
             ) {
                 Text(text = "Welcome on Detail Article Screen with ID: $articleId")
-//                viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
-//                    when (uiState) {
-//                        is UiState.Loading -> {
-//                            viewModel.getProductByIdApiCall(productId)
-//                            ProgressProduct()
-//                        }
-//
-//                        is UiState.Success -> {
-//                            DetailContent(product = uiState.data, viewModel = viewModel)
-//                        }
-//
-//                        is UiState.Error -> {
-//                            Text(text = stringResource(R.string.error_product), color = MaterialTheme.colorScheme.onSurface)
-//                        }
-//                    }
-//                }
             }
         })
 }

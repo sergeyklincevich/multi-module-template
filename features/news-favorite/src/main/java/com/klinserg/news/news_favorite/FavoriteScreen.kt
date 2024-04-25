@@ -43,8 +43,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.klinserg.news.news_favorite.viewmodels.FavoriteViewModel
 import com.klinserg.news.uikit.theme.GrayApp
 
@@ -52,8 +50,6 @@ import com.klinserg.news.uikit.theme.GrayApp
 fun FavoriteScreen(
     modifier: Modifier = Modifier,
     viewModel: FavoriteViewModel = hiltViewModel(),
-    navHostController: NavHostController = rememberNavController(),
-    navigateToDetail: (Long) -> Unit,
 ) {
     val enabled by viewModel.state.collectAsState()
 

@@ -23,7 +23,6 @@ import androidx.compose.ui.res.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
-//    viewModel: DetailViewModel = hiltViewModel(),
     navigateToDetail: (Long) -> Unit,
     navigateBack: () -> Unit,
 ) {
@@ -56,22 +55,6 @@ fun SearchScreen(
                     .padding(it)
             ) {
                 Text(text = "Welcome on Search Article Screen")
-//                viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
-//                    when (uiState) {
-//                        is UiState.Loading -> {
-//                            viewModel.getProductByIdApiCall(productId)
-//                            ProgressProduct()
-//                        }
-//
-//                        is UiState.Success -> {
-//                            DetailContent(product = uiState.data, viewModel = viewModel)
-//                        }
-//
-//                        is UiState.Error -> {
-//                            Text(text = stringResource(R.string.error_product), color = MaterialTheme.colorScheme.onSurface)
-//                        }
-//                    }
-//                }
             }
         })
 }
