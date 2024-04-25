@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -29,7 +30,7 @@ fun MainNavHost(
     NavHost(
         navController = navController,
         startDestination = NavigationPanel.News.route,
-        modifier = Modifier.padding(innerPadding)
+        modifier = Modifier.padding(innerPadding.copy(top = 0.dp))
     ) {
         composable(NavigationPanel.News.route) {
             NewsScreen(

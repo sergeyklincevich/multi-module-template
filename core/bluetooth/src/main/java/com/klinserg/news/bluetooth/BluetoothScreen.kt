@@ -1,6 +1,8 @@
 package com.klinserg.news.bluetooth
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,33 +34,35 @@ fun BluetoothScreen(
         mutableStateOf(haveAllPermissions(context))
     }
 
-    if (!allPermissionsGranted) {
-        PermissionsRequiredScreen { allPermissionsGranted = true }
-    } else if (uiState.activeDevice == null) {
-        ScanningScreen(
-            isScanning = uiState.isScanning,
-            foundDevices = uiState.foundDevices,
-            startScanning = viewModel::startScanning,
-            stopScanning = viewModel::stopScanning,
-            selectDevice = { device ->
-                viewModel.stopScanning()
-                viewModel.setActiveDevice(device)
-            }
-        )
-    } else {
-        DeviceScreen(
-            unselectDevice = {
-                viewModel.disconnectActiveDevice()
-                viewModel.setActiveDevice(null)
-            },
-            isDeviceConnected = uiState.isDeviceConnected,
-            discoveredCharacteristics = uiState.discoveredCharacteristics,
-            password = uiState.password,
-            nameWrittenTimes = uiState.nameWrittenTimes,
-            connect = viewModel::connectActiveDevice,
-            discoverServices = viewModel::discoverActiveDeviceServices,
-            readPassword = viewModel::readPasswordFromActiveDevice,
-            writeName = viewModel::writeNameToActiveDevice
-        )
+    Box(modifier = Modifier.statusBarsPadding()) {
+        if (!allPermissionsGranted) {
+            PermissionsRequiredScreen { allPermissionsGranted = true }
+        } else if (uiState.activeDevice == null) {
+            ScanningScreen(
+                isScanning = uiState.isScanning,
+                foundDevices = uiState.foundDevices,
+                startScanning = viewModel::startScanning,
+                stopScanning = viewModel::stopScanning,
+                selectDevice = { device ->
+                    viewModel.stopScanning()
+                    viewModel.setActiveDevice(device)
+                }
+            )
+        } else {
+            DeviceScreen(
+                unselectDevice = {
+                    viewModel.disconnectActiveDevice()
+                    viewModel.setActiveDevice(null)
+                },
+                isDeviceConnected = uiState.isDeviceConnected,
+                discoveredCharacteristics = uiState.discoveredCharacteristics,
+                password = uiState.password,
+                nameWrittenTimes = uiState.nameWrittenTimes,
+                connect = viewModel::connectActiveDevice,
+                discoverServices = viewModel::discoverActiveDeviceServices,
+                readPassword = viewModel::readPasswordFromActiveDevice,
+                writeName = viewModel::writeNameToActiveDevice
+            )
+        }
     }
 }
