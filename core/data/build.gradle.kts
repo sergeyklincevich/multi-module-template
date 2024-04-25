@@ -40,7 +40,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.javax.inject)
 
-    implementation(projects.core.newsApi)
-    implementation(projects.core.newsDb)
+    implementation(projects.core.network)
+    implementation(projects.core.database)
     implementation(projects.core.common)
 }

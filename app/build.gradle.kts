@@ -87,11 +87,11 @@ dependencies {
     implementation(projects.features.newsDetails)
     implementation(projects.features.newsFavorite)
     implementation(projects.features.newsSearch)
-    implementation(projects.core.newsUikit)
-    implementation(projects.core.newsData)
-    implementation(projects.core.newsCore)
-    implementation(projects.core.newsDb)
-    implementation(projects.core.newsApi)
+    implementation(projects.core.designsystem)
+    implementation(projects.core.data)
+    implementation(projects.core.common)
+    implementation(projects.core.database)
+    implementation(projects.core.network)
     implementation(projects.core.bluetooth)
 }
 
