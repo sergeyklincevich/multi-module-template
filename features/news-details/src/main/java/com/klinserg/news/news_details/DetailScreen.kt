@@ -2,8 +2,12 @@ package com.klinserg.news.news_details
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
@@ -21,8 +25,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import com.klinserg.news.data.models.Article
 import com.klinserg.news.news_details.viewmodels.DetailsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,7 +63,6 @@ fun DetailScreen(
             )
         }, content = {
             Box(
-                contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Color.Gray)
@@ -64,10 +71,40 @@ fun DetailScreen(
                 when (val value = state) {
                     is DetailsViewModel.State.None -> Text(text = "Status NONE for ArticleId: $articleId")
                     is DetailsViewModel.State.InProgress -> CircularProgressIndicator()
-                    is DetailsViewModel.State.Success -> Text(text = "Status Success for ArticleId: $articleId")
+                    is DetailsViewModel.State.Success -> ArticleInfo(article = value.article)
                     is DetailsViewModel.State.Error -> Text(text = "Status Error for ArticleId: $articleId, Error: ${value.message}")
-
                 }
             }
         })
+}
+
+@Composable
+fun ArticleInfo(article: Article) {
+    Column {
+        article.urlToImage?.let {
+            AsyncImage(
+                model = it,
+                contentDescription = article.title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.heightIn(max = 400.dp)
+            )
+            Spacer(modifier = Modifier.size(16.dp))
+            Text(
+                text = article.title,
+                style = MaterialTheme.typography.headlineMedium,
+            )
+            Text(
+                text = article.description,
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            Text(
+                modifier = Modifier
+                    .padding(top = 48.dp)
+                    .align(Alignment.End),
+                text = article.publishedAt.toString(),
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
+    }
+
 }
