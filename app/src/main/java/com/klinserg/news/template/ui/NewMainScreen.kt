@@ -6,11 +6,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.klinserg.news.template.utils.NewsNavigationType
 import com.klinserg.news.template.navigation.BottomNav
-import com.klinserg.news.template.navigation.drawernav.DrawerNav
 import com.klinserg.news.template.navigation.RailNav
+import com.klinserg.news.template.navigation.drawernav.DrawerNav
 import com.klinserg.news.template.navigation.model.NavigationPanel
+import com.klinserg.news.template.utils.NewsNavigationType
 
 @Composable
 fun NewMainScreen(
@@ -22,7 +22,12 @@ fun NewMainScreen(
     val currentDestination = navBackStackEntry?.destination
 
     val navigationItemList =
-        listOf(NavigationPanel.News, NavigationPanel.Favorite, NavigationPanel.Profile)
+        listOf(
+            NavigationPanel.News,
+            NavigationPanel.Search,
+            NavigationPanel.Favorite,
+            NavigationPanel.Profile
+        )
 
     when (navigationType) {
         NewsNavigationType.BOTTOM_NAVIGATION -> BottomNav(

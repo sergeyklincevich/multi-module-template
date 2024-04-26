@@ -10,6 +10,13 @@ sealed class NavigationPanel(val route: String) {
         iconSelected = R.drawable.home,
     )
 
+    data object Search : NavigationItem(
+        route = "route_search",
+        name = "Search",
+        icon = android.R.drawable.ic_menu_search,
+        iconSelected = android.R.drawable.ic_menu_search,
+    )
+
     data object Favorite : NavigationItem(
         route = "route_favorite",
         name = "Favorite",

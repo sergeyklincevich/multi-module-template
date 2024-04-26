@@ -42,6 +42,13 @@ fun MainNavHost(
                 }
             )
         }
+        composable(NavigationPanel.Search.route) {
+            SearchScreen(
+                navigateToDetail = { articleId ->
+                    navController.navigate(GeneralScreen.DetailArticle.createRoute(articleId))
+                }
+            )
+        }
         composable(NavigationPanel.Favorite.route) {
             FavoriteScreen()
         }
@@ -67,9 +74,6 @@ fun MainNavHost(
                 navigateToDetail = { articleId ->
                     navController.navigate(GeneralScreen.DetailArticle.createRoute(articleId))
                 },
-                navigateBack = {
-                    navController.navigateUp()
-                }
             )
         }
     }
