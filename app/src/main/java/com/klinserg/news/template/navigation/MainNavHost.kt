@@ -50,9 +50,9 @@ fun MainNavHost(
         }
         composable(
             route = GeneralScreen.DetailArticle.route,
-            arguments = listOf(navArgument("articleId") { type = NavType.IntType }),
+            arguments = listOf(navArgument("articleId") { type = NavType.StringType }),
         ) {
-            val id = it.arguments?.getInt("articleId") ?: -1
+            val id = it.arguments?.getString("articleId") ?: ""
             DetailScreen(
                 articleId = id,
                 navigateBack = {

@@ -35,7 +35,7 @@ import com.klinserg.news.ui.viewmodels.NewsViewModel
 fun NewsScreen(
     modifier: Modifier = Modifier,
     viewModel: NewsViewModel = hiltViewModel(),
-    navigateToDetail: (Long) -> Unit,
+    navigateToDetail: (String) -> Unit,
     navigateToSearch: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
@@ -60,7 +60,7 @@ fun NewsScreen(
 
 
 @Composable
-fun ListArticles(state: NewsViewModel.State.Success, navigateToDetail: (Long) -> Unit) {
+fun ListArticles(state: NewsViewModel.State.Success, navigateToDetail: (String) -> Unit) {
     LazyColumn {
         items(state.articles) {
             key(it.id) {
@@ -71,11 +71,11 @@ fun ListArticles(state: NewsViewModel.State.Success, navigateToDetail: (Long) ->
 }
 
 @Composable
-fun ArticleItem(article: Article, navigateToDetail: (Long) -> Unit) {
+fun ArticleItem(article: Article, navigateToDetail: (String) -> Unit) {
     Row(
         Modifier
             .padding(4.dp)
-            .clickable { navigateToDetail(article.id) }) {
+            .clickable { navigateToDetail(article.title) }) {
         article.urlToImage?.let {
             AsyncImage(
                 model = it,

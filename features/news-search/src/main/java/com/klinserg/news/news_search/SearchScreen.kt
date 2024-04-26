@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
-    navigateToDetail: (Long) -> Unit,
+    navigateToDetail: (String) -> Unit,
     navigateBack: () -> Unit,
 ) {
     Scaffold(

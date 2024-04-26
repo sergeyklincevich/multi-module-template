@@ -28,7 +28,7 @@ import com.klinserg.news.news_details.viewmodels.DetailsViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
-    articleId: Int,
+    articleId: String,
     viewModel: DetailsViewModel = hiltViewModel(),
     navigateBack: () -> Unit,
 ) {
@@ -64,11 +64,10 @@ fun DetailScreen(
                 when (val value = state) {
                     is DetailsViewModel.State.None -> Text(text = "Status NONE for ArticleId: $articleId")
                     is DetailsViewModel.State.InProgress -> CircularProgressIndicator()
-                    is DetailsViewModel.State.Success -> Text(text = "Status Success for ArticleId: $articleId, with title: ${value.article.title}")
+                    is DetailsViewModel.State.Success -> Text(text = "Status Success for ArticleId: $articleId")
                     is DetailsViewModel.State.Error -> Text(text = "Status Error for ArticleId: $articleId, Error: ${value.message}")
 
                 }
-                Text(text = "Welcome on Detail Article Screen with ID: $articleId")
             }
         })
 }

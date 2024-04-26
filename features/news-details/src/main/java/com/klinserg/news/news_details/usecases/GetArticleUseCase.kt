@@ -10,7 +10,7 @@ class GetArticleUseCase @Inject constructor(
     private val repository: ArticlesRepository,
 ) {
 
-    operator fun invoke(articleId: Int): Flow<RequestResult<Article>> {
+    operator fun invoke(articleId: String): Flow<RequestResult<Article>> {
         return repository.getLocalArticle(articleId);
     }
 }

@@ -76,9 +76,13 @@ class ArticlesRepository @Inject constructor(
         }
     }
 
-    fun getLocalArticle(id: Int): Flow<RequestResult<Article>> {
-        val dbData = flow { emit(db.articleDao.getArticle(id)) }
-            .map { RequestResult.Success(it) }
+    fun getLocalArticle(articleId: String): Flow<RequestResult<Article>> {
+        val dbData = flow { emit(db.articleDao.getArticle(articleId)) }
+            .map {
+                if (it == null) {
+                    RequestResult.Error("There is no Article with such ID in Local DB")
+                } else RequestResult.Success(it)
+            }
             .catch {
                 RequestResult.Error(message = it.message)
                 logger.e(TAG, "Error during getting data from DB: ${it.message}")

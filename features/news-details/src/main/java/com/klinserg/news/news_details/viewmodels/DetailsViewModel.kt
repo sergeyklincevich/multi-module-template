@@ -1,8 +1,8 @@
 package com.klinserg.news.news_details.viewmodels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.klinserg.news.data.ArticlesRepository
 import com.klinserg.news.data.RequestResult
 import com.klinserg.news.data.models.Article
 import com.klinserg.news.news_details.usecases.GetArticleUseCase
@@ -15,10 +15,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     getArticleUseCase: GetArticleUseCase,
 ) : ViewModel() {
 
-    val state: StateFlow<State> = getArticleUseCase(12)
+    private val selectedArticleId: StateFlow<String> =
+        savedStateHandle.getStateFlow("articleId", "")
+
+    val state: StateFlow<State> = getArticleUseCase(selectedArticleId.value)
         .map { it.toState() }
         .stateIn(viewModelScope, SharingStarted.Lazily, State.None)
 
