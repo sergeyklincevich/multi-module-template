@@ -75,5 +75,18 @@ class ArticlesRepository @Inject constructor(
             }
         }
     }
+
+    fun getLocalArticle(id: Int): Flow<RequestResult<Article>> {
+        val dbData = flow { emit(db.articleDao.getArticle(id)) }
+            .map { RequestResult.Success(it) }
+            .catch {
+                RequestResult.Error(message = it.message)
+                logger.e(TAG, "Error during getting data from DB: ${it.message}")
+            }
+        val start = flow<RequestResult<ArticleDBO>> { emit(RequestResult.InProgress) }
+
+        return merge(start, dbData)
+            .map { result -> result.map { it.toArticle() } }
+    }
 }
 

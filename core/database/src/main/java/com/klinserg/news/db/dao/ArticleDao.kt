@@ -19,6 +19,9 @@ interface ArticleDao {
     @Insert
     suspend fun insertAll(articles: List<ArticleDBO>)
 
+    @Query("SELECT * FROM articles WHERE id = :id")
+    suspend fun getArticle(id: Int): ArticleDBO
+
     @Delete
     fun delete(article: ArticleDBO)
 
