@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBar
@@ -14,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.klinserg.news.data.models.Article
 import com.klinserg.news.news_search.viewmodels.SearchNewsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,7 +57,7 @@ fun SearchScreen(
 //        })
     val searchText by viewModel.searchText.collectAsState()
     val isSearching by viewModel.isSearching.collectAsState()
-    val newsList by viewModel.newsList.collectAsState()
+    val searchState by viewModel.newsList.collectAsState()
 
     Scaffold(
         topBar = {
@@ -69,22 +71,32 @@ fun SearchScreen(
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                LazyColumn {
-                    items(newsList) { news ->
-                        Text(
-                            text = news.title,
-                            modifier = Modifier.padding(
-                                start = 8.dp,
-                                top = 4.dp,
-                                end = 8.dp,
-                                bottom = 4.dp
-                            )
-                        )
-                    }
+                when (val value = searchState) {
+                    is SearchNewsViewModel.State.None -> Text("Please start search")
+                    is SearchNewsViewModel.State.InProgress -> CircularProgressIndicator()
+                    is SearchNewsViewModel.State.Success -> ArticleList(value.articles)
+                    is SearchNewsViewModel.State.Error -> Text("Error: ${value.message}")
                 }
             }
         }
     ) {
         Text("-----------", modifier = Modifier.padding(it))
+    }
+}
+
+@Composable
+fun ArticleList(articles: List<Article>) {
+    LazyColumn {
+        items(articles) {
+            Text(
+                text = it.title,
+                modifier = Modifier.padding(
+                    start = 8.dp,
+                    top = 4.dp,
+                    end = 8.dp,
+                    bottom = 4.dp
+                )
+            )
+        }
     }
 }

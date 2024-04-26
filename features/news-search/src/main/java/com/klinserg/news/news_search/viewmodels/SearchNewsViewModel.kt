@@ -2,48 +2,46 @@ package com.klinserg.news.news_search.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.klinserg.news.data.ArticlesRepository
 import com.klinserg.news.data.RequestResult
 import com.klinserg.news.data.models.Article
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
+private const val SEARCH_QUERY_MIN_LENGTH = 3
+
 @HiltViewModel
 class SearchNewsViewModel @Inject constructor(
-//    getAllArticlesUseCase: GetAllArticlesUseCase,
+    private val repository: ArticlesRepository,
 ) : ViewModel() {
 
-    //first state whether the search is happening or not
     private val _isSearching = MutableStateFlow(false)
     val isSearching = _isSearching.asStateFlow()
 
-    //second state the text typed by the user
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
 
-    //third state the list to be filtered
-    private val _newsList = MutableStateFlow(emptyList<Article>())
     val newsList = searchText
-        .combine(_newsList) { text, news ->
-            if (text.isBlank()) {
-                news
+        .flatMapLatest { query ->
+            if (query.length < SEARCH_QUERY_MIN_LENGTH) {
+                flowOf(RequestResult.Success(emptyList()))
+            } else {
+                repository.getAllArticles(query)
             }
-//            news.filter { news ->
-//                news.uppercase().contains(text.trim().uppercase())
-//            }
-            news
-        }.stateIn(
+        }
+        .map { it.toState() }
+        .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = _newsList.value
+            started = SharingStarted.Lazily,
+            initialValue = State.None
         )
-//    val state: StateFlow<State> = getAllArticlesUseCase(query = "android")
-//        .map { it.toState() }
-//        .stateIn(viewModelScope, SharingStarted.Lazily, State.None)
 
     fun onSearchTextChange(text: String) {
         _searchText.value = text
