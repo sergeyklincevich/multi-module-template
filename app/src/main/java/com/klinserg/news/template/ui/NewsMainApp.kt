@@ -17,6 +17,6 @@ fun NewsMainApp(
         else -> NewsNavigationType.BOTTOM_NAVIGATION
     }
 
-    NewMainScreen(navigationType, modifier)
+    NewsMainScreen(navigationType, modifier)
 }
 

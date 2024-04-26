@@ -13,7 +13,7 @@ import com.klinserg.news.template.navigation.model.NavigationPanel
 import com.klinserg.news.template.utils.NewsNavigationType
 
 @Composable
-fun NewMainScreen(
+fun NewsMainScreen(
     navigationType: NewsNavigationType,
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
